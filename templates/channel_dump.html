@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ channel }}</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Timestamp</th>
+        <th>User</th>
+        <th>Message</th>
+    </tr>
+    {% for post in posts %}
+        <tr>
+            <td>{{ post.timestamp }}</td>
+            <td>{{ post.user }}</td>
+            <td>{{ post.message|safe }}</td>
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

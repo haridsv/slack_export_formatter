@@ -1,0 +1,2 @@
+markdown==2.6.11
+Jinja2==2.10
