@@ -26,10 +26,11 @@ def get_channel_posts(users, channel_directory):
             user_regex = '<@(U[^>]+)'
             message = post['text']
             for user_id in re.findall(user_regex, post['text']):
-                message = message.replace(user_id, users[user_id]['profile']['real_name'])
+                if user_id in users:
+                    message = message.replace(user_id, users[user_id]['profile']['real_name'])
 
             posts.append({
-                'user': users[post['user']]['profile']['real_name'],
+                'user': post['user'] in users and users[post['user']]['profile']['real_name'] or post['user'],
                 'message': markdown(message),
                 'timestamp': datetime.datetime.fromtimestamp(int(post['ts'].split('.')[0]))
             })
